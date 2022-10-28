@@ -15,4 +15,11 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 		<http:request method="GET" doc:name="Request" doc:id="88f08e32-e3a9-419a-869a-9062a2c06e95" config-ref="HTTP_Request_configuration" path="/api/v1/employees"/>
 		<logger level="INFO" doc:name="Logger" doc:id="4197b5e5-447c-4977-874a-b80f9f4c2cea" message="#[payload]"/>
 	</flow>
+	<flow name="POST-Employee" doc:id="5904b277-872d-4f27-84d8-640c66811d77" >
+		<http:listener doc:name="addEmployee" doc:id="6e191121-4628-420a-a12c-32e068b8b0a6" config-ref="HTTP_Listener_config" path="/addEmployee"/>
+		<http:request method="GET" doc:name="Request" doc:id="749f1955-01f1-4d67-88d9-850d56b955f9" config-ref="HTTP_Request_configuration" path="/api/v1/create"/>
+	</flow>
+	<flow name="GET-getEmployeeByID" doc:id="01140765-245c-4580-b23c-135bfbc8e60d" >
+		<http:listener doc:name="getEmployeeByID" doc:id="9da16e88-a784-489a-bbfb-f8ff3a60dc82" config-ref="HTTP_Listener_config" path="/getEmployeeByID"/>
+	</flow>
 </mule>
