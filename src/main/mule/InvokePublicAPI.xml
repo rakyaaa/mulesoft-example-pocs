@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd">
+	<http:request-config name="HTTP_Request_configuration1" doc:name="HTTP Request configuration" doc:id="409263e6-5a77-49e1-887e-3e62e5a42d44" >
+		<http:request-connection protocol="HTTPS" host="api.publicapis.org" />
+	</http:request-config>
+	<flow name="InvokePublicAPIFlow" doc:id="14a615d7-108c-4dda-b09f-fc4adfb35030" >
+		<http:listener doc:name="Listener" doc:id="6c47a44e-b782-4092-abe5-aa30aee4eaef" config-ref="HTTP_Listener_config" path="/invokePublicAPI"/>
+		<http:request method="GET" doc:name="Request" doc:id="ad6bf43b-cb75-4b79-b87f-f238f1770dd5" path="/entries" config-ref="HTTP_Request_configuration1"/>
+		<logger level="INFO" doc:name="Logger" doc:id="4028e9f2-70eb-457c-a040-44661feddd7d" message="#[payload.count]"/>
+	</flow>
+</mule>
